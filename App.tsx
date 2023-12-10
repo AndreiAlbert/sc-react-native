@@ -6,6 +6,7 @@ import ListScreen from './src/screens/ListScreen';
 import AddEditScreen from './src/screens/AddEditScreen';
 import { ProductsProvider } from './src/ProductContext';
 import { Product } from './src/ProductContext';
+import NetInfo from '@react-native-community/netinfo';
 
 export type RootStackParamList = {
   Home: undefined;

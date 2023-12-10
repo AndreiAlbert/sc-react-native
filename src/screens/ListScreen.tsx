@@ -49,7 +49,6 @@ function ListScreen({ navigation }: Props) {
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
               <View style={styles.item}>
-                <Image source={{ uri: item.image }} style={styles.image} />
                 <View style={styles.infoContainer}>
                   <Text style={styles.title}>{item.name}</Text>
                   <Text style={styles.price}>${item.price.toFixed(2)}</Text>

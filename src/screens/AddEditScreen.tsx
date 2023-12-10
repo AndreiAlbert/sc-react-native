@@ -4,7 +4,6 @@ import { useProducts } from '../ProductContext';
 import { RootStackParamList } from '../../App';
 import {StackNavigationProp} from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
-import ImageUpload from '../ImageUpload';
 
 type AddEditScreenRouteProp = RouteProp<RootStackParamList, 'AddEdit'>;
 type AddEditScreenNavigationProp = StackNavigationProp<RootStackParamList, 'AddEdit'>;
@@ -26,7 +25,6 @@ function AddEditScreen({ route, navigation }: AddEditScreenProps) {
     useEffect(() => {
         if(product) {
             setName(product.name);
-            setImage(product.image);
             setPrice(product.price.toString());
             setLocation(product.location);
         } 
@@ -35,9 +33,9 @@ function AddEditScreen({ route, navigation }: AddEditScreenProps) {
     const handleSave = () => {
         const productPrice = parseFloat(price);
         if(product) {
-            updateProduct(product.id, name, image, productPrice, location);
+            updateProduct(product.id, name, productPrice, location);
         } else {
-            addProduct(name, image, productPrice, location); 
+            addProduct(name, productPrice, location); 
         }
         navigation.navigate('List');
     }
@@ -68,7 +66,6 @@ function AddEditScreen({ route, navigation }: AddEditScreenProps) {
                 placeholder='Enter location'
             />
             <Text style={styles.label}>Upload a picture</Text>
-            <ImageUpload onImageSelected={setImage}  />
             <TouchableOpacity style={styles.button} onPress={handleSave}>
                 <Text style={styles.buttonText}>Save product</Text>
             </TouchableOpacity>
